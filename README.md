@@ -1,0 +1,1 @@
+The [Grundschrift Fonts](http://openfontlibrary.org/en/font/grundschrift) by [Christian Urff](http://www.lernsoftware-mathematik.de) are licensed under [CC BY 3.0](http://creativecommons.org/licenses/by/3.0/)
