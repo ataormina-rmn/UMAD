@@ -8,6 +8,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import de.greenrobot.event.EventBus;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -21,6 +24,8 @@ public class MainActivity extends ActionBarActivity {
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
+
+        EventBus.getDefault().register(this);
     }
 
 
@@ -47,6 +52,9 @@ public class MainActivity extends ActionBarActivity {
     }
 
 
+    public void onEvent(Message event) {
+        Toast.makeText(this, event.message, Toast.LENGTH_SHORT).show();
+    }
 
     /**
      * A placeholder fragment containing a simple view.
@@ -60,6 +68,13 @@ public class MainActivity extends ActionBarActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+
+            rootView.findViewById(R.id.hello_world).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    EventBus.getDefault().post(new Message("hi everyone!"));
+                }
+            });
             return rootView;
         }
     }
