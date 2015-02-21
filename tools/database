@@ -1,0 +1,4 @@
+#!/bin/bash          
+adb pull -p /data/data/com.whaleshark.retailmenot/databases/retailmenot.db $1
+
+# $1 is the optional location you want the db to go
